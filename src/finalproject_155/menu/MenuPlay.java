@@ -67,14 +67,14 @@ public class MenuPlay{
         
         this.initScore();
         
-        Scene scene = new Scene(bp);
+        Scene scene = new Scene(bp, GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT);
         rtr.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent event) {
                 
                 stage.setScene(back);
-
+                stage.centerOnScreen();
             }
             
         });

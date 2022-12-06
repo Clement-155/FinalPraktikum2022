@@ -87,7 +87,7 @@ public class MenuHighScr {
             public void handle(ActionEvent event) {
                 
                 stage.setScene(back);
-
+                stage.centerOnScreen();
             }
             
         });

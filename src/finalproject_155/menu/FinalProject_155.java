@@ -43,8 +43,9 @@ public class FinalProject_155 extends Application {
         BorderPane root = new BorderPane();
         root.setCenter(buttons);
         buttons.setAlignment(Pos.CENTER);
-        Scene mainScene = new Scene(root);
+        Scene mainScene = new Scene(root, GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT);
         primaryStage.setScene(mainScene);
+        primaryStage.setTitle("Deflect");
         primaryStage.centerOnScreen();
         primaryStage.show();
         
@@ -57,7 +58,7 @@ public class FinalProject_155 extends Application {
             public void handle(ActionEvent event) {
                 MenuPlay play = new MenuPlay();
                 primaryStage.setScene(play.create(primaryStage, mainScene));
-                
+                primaryStage.centerOnScreen();
             }
             
         });
@@ -67,7 +68,7 @@ public class FinalProject_155 extends Application {
             public void handle(ActionEvent event) {
                 MenuHighScr highScore = new MenuHighScr();
                 primaryStage.setScene(highScore.create(primaryStage, mainScene));
-                
+                primaryStage.centerOnScreen();
             }
             
         });
