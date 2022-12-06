@@ -4,7 +4,8 @@
  */
 package finalproject_155.menu;
 
-
+import finalproject_155.game.*;
+        
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,8 +34,11 @@ import javafx.stage.Stage;
  */
 public class MenuPlay{
     
-   ArrayList<Entry> scores = new ArrayList<Entry>();
-   Scene back;
+    ArrayList<Entry> scores = new ArrayList<Entry>();
+    private List<Attack> attacks;
+    private Player player;
+    private Shield shield;
+    Scene back;
    
     private void initScore(){
         String line = "";

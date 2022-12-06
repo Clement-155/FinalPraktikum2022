@@ -48,7 +48,7 @@ public class FinalProject_155 extends Application {
         primaryStage.setTitle("Deflect");
         primaryStage.centerOnScreen();
         primaryStage.show();
-        
+        primaryStage.setResizable(false);
 
         
         //Fungsi button
