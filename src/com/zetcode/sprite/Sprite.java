@@ -1,17 +1,16 @@
-package finalproject_155.game;
-import javafx.scene.image.Image;
+package com.zetcode.sprite;
 
+import java.awt.Image;
 
-
-abstract public class Sprite {
+public class Sprite {
 
     private boolean visible;
     private Image image;
     private boolean dying;
 
-    double x;
-    double y;
-    double dx;
+    int x;
+    int y;
+    int dx;
 
     public Sprite() {
 
@@ -43,22 +42,22 @@ abstract public class Sprite {
         return image;
     }
 
-    public void setX(double x) {
+    public void setX(int x) {
 
         this.x = x;
     }
 
-    public void setY(double y) {
+    public void setY(int y) {
 
         this.y = y;
     }
 
-    public double getY() {
+    public int getY() {
 
         return y;
     }
 
-    public double getX() {
+    public int getX() {
 
         return x;
     }

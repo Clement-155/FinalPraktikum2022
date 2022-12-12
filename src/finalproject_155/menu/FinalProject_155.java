@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
+
+/*
+Utilizing Codes from = https://zetcode.com/javagames/spaceinvaders/
+*/
 package finalproject_155.menu;
 
 
@@ -20,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -45,11 +50,12 @@ public class FinalProject_155 extends Application {
         buttons.setAlignment(Pos.CENTER);
         Scene mainScene = new Scene(root, GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT);
         primaryStage.setScene(mainScene);
-        primaryStage.setTitle("Deflect");
+        primaryStage.setTitle("Space Invaders");
         primaryStage.centerOnScreen();
+        primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
         primaryStage.setResizable(false);
-
+        
         
         //Fungsi button
         play.setOnAction(new EventHandler<ActionEvent>() {

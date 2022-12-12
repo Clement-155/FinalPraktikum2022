@@ -4,7 +4,9 @@
  */
 package finalproject_155.menu;
 
-import finalproject_155.game.*;
+import com.zetcode.*;
+
+
         
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,9 +17,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import javafx.application.Application;
+import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -27,18 +31,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author Christopher Clement
  */
-public class MenuPlay{
+public class MenuPlay extends MenuTemp {
     
     ArrayList<Entry> scores = new ArrayList<Entry>();
-    private List<Attack> attacks;
-    private Player player;
-    private Shield shield;
-    Scene back;
    
     private void initScore(){
         String line = "";
@@ -64,20 +65,25 @@ public class MenuPlay{
         }
     }
         
+    @Override
     public Scene create(Stage stage, Scene back){
         
-        BorderPane bp = new BorderPane();       
-        Button rtr = new Button("Return");
-        bp.setBottom(rtr);
+        final SwingNode spaceInvaders = new SwingNode();
+        var ex = new SpaceInvaders();
+        game(spaceInvaders, ex);
+        
+        this.addScene(GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT);
+        
+        BorderPane temp = (BorderPane) root.getChildren().get(0);
+        temp.setCenter(spaceInvaders);
         
         this.initScore();
         
-        Scene scene = new Scene(bp, GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT);
         rtr.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
             public void handle(ActionEvent event) {
-                
+                ex.dispose();
                 stage.setScene(back);
                 stage.centerOnScreen();
             }
@@ -88,6 +94,17 @@ public class MenuPlay{
         
         return scene;
         
+    }
+    
+        public static void game(final SwingNode swingnode, final SpaceInvaders ex) {
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run(){
+                
+                ex.setVisible(true);
+            }
+        });
     }
     
 }

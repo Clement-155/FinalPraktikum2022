@@ -25,19 +25,21 @@ import javafx.stage.Stage;
  *
  * @author Christopher Clement
  */
-public class MenuHighScr {
-    
-    Scene back;
-        
+public class MenuHighScr extends MenuTemp {
+            
+    @Override
     public Scene create(Stage stage, Scene back){
         
-        BorderPane bp = new BorderPane();
+        this.addScene();
+
         Text title = new Text("High Scores");
         TableView<Entry> tableView = new TableView<Entry>();
-        Button rtr = new Button("Return");
+        
+        BorderPane bp = (BorderPane) root.getChildren().get(0);
+        
         bp.setTop(title);
         bp.setCenter(tableView);
-        bp.setBottom(rtr);
+
         /*---------------------------------*/
         /*---------------------------------*/
         //Membuat dan membaca data highscore
@@ -80,7 +82,7 @@ public class MenuHighScr {
         
         /*---------------------------------*/
         /*---------------------------------*/
-        Scene scene = new Scene(bp);
+
         rtr.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
