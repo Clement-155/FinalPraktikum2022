@@ -75,6 +75,9 @@ Aplikasi Konsep PBO
 Referensi
 
   https://zetcode.com/javagames/spaceinvaders/
+  
   https://openjfx.io/javadoc/11/javafx.swing/javafx/embed/swing/SwingNode.html
+  
   https://jenkov.com/tutorials/javafx/tableview.html
+  
   https://stackoverflow.com/questions/43309483/can-i-create-various-scene-in-diffent-class-file-and-switch-between-them-in-java
