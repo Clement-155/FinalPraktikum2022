@@ -8,14 +8,14 @@ import javax.swing.SwingUtilities;
 
 public class SpaceInvaders extends JFrame  {
 
-    public SpaceInvaders() {
+    public SpaceInvaders(int score) {
 
-        initUI();
+        initUI(score);
     }
 
-    private void initUI() {
+    private void initUI(int score) {
 
-        add(new Board());
+        add(new Board(score));
 
         setTitle("Space Invaders");
         setSize(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);

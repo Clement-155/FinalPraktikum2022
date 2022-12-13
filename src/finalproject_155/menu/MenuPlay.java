@@ -28,6 +28,7 @@ import javax.swing.SwingUtilities;
  */
 public class MenuPlay extends MenuTemp implements SwingApp<SpaceInvaders> {
     
+    int score = -1;
     ArrayList<Entry> scores = new ArrayList<Entry>();
    
     private void initScore(){
@@ -57,10 +58,10 @@ public class MenuPlay extends MenuTemp implements SwingApp<SpaceInvaders> {
     @Override
     public Scene create(Stage stage, Scene back){
         
-        final var ex = new SpaceInvaders();
+        final var ex = new SpaceInvaders(this.score);
         
         gameRun(ex);
-        
+       
         BorderPane bp = new BorderPane();
         this.addScene(bp, GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT, "SpaceInvaders");
         
@@ -71,6 +72,9 @@ public class MenuPlay extends MenuTemp implements SwingApp<SpaceInvaders> {
             @Override
             public void handle(ActionEvent event) {
                 gameClose(ex);
+                if(score > 0){
+                    System.out.println(score);
+                }
                 stage.setScene(back);
                 stage.centerOnScreen();
             }

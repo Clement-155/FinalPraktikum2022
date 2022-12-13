@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -30,18 +31,23 @@ public class Board extends JPanel {
     
     private int direction = -1;
     private int deaths = 0;
+    private int numSeconds;
 
     private boolean inGame = true;
     private String explImg = "src/images/explosion.png";
     private String message = "Game Over";
 
     private Timer timer;
+    
+    private Date startDate;
+    private Date endDate;
 
 
-    public Board() {
+    public Board(int score) {
 
         initBoard();
         gameInit();
+        score = numSeconds;
     }
 
     private void initBoard() {
@@ -52,6 +58,7 @@ public class Board extends JPanel {
         setBackground(Color.black);
 
         timer = new Timer(Commons.DELAY, new GameCycle());
+        startDate = new Date();
         timer.start();
 
         gameInit();
@@ -180,12 +187,14 @@ public class Board extends JPanel {
                 Commons.BOARD_WIDTH / 2);
     }
 
-    private void update() {
+    private int update() {
 
         if (deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY) {
 
             inGame = false;
             timer.stop();
+            endDate = new Date();
+            numSeconds = (int)((endDate.getTime() - startDate.getTime()) / 1000);
             message = "Game won!";
         }
 
