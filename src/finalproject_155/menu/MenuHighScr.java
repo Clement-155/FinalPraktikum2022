@@ -30,14 +30,11 @@ public class MenuHighScr extends MenuTemp {
     @Override
     public Scene create(Stage stage, Scene back){
         
-        this.addScene();
+        BorderPane bp = new BorderPane();
+        this.addScene(bp, "High Scores");
 
-        Text title = new Text("High Scores");
         TableView<Entry> tableView = new TableView<Entry>();
-        
-        BorderPane bp = (BorderPane) root.getChildren().get(0);
-        
-        bp.setTop(title);
+       
         bp.setCenter(tableView);
 
         /*---------------------------------*/

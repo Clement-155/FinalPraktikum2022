@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -19,38 +20,47 @@ import javafx.stage.Stage;
  * @author Christopher Clement
  */
 abstract class MenuTemp {
-    Group root = new Group();
+
+    private Text title;
     Button rtr = new Button("Return");
     Scene scene;
     
-    public void addScene (){
-        BorderPane bp = new BorderPane();
-        bp.setBottom(rtr);
-        root.getChildren().add(bp);
-        scene = new Scene(root);
+    
+    public <P extends Pane> void addScene (P paneGroup, String title){
+        this.title = new Text(title);
+        if(paneGroup instanceof BorderPane){
+            BorderPane bp = (BorderPane) paneGroup;
+            bp.setBottom(rtr);
+            bp.setTop(this.title);
+            scene = new Scene(bp);
+        }
+        else{
+            paneGroup.getChildren().addAll(rtr, this.title);
+            scene = new Scene(paneGroup);
+        }
+        
     }
     
-    public void addScene (double w, double h){
-        BorderPane bp = new BorderPane();
-        bp.setBottom(rtr);
-        root.getChildren().add(bp);
-        root.getChildren().get(0).setLayoutY(h-25);
-        scene = new Scene(root, w, h);
+    public <P extends Pane> void addScene (P paneGroup, double w, double h, String title){
+        this.title = new Text(title);
+        if(paneGroup instanceof BorderPane){
+            BorderPane bp = (BorderPane) paneGroup;
+            bp.setBottom(rtr);
+            bp.setTop(this.title);
+            scene = new Scene(bp, w, h);
+        }
+        else{
+            paneGroup.getChildren().addAll(rtr, this.title);
+            scene = new Scene(paneGroup, w, h);
+        }
     }
     
-    public <P extends Pane> void addScene (P paneGroup){
-        paneGroup.getChildren().add(rtr);
-        root.getChildren().add(paneGroup);
-        scene = new Scene(root);
+        /**
+     * @return the title
+     */
+    public Text getTitle() {
+        return title;
     }
-    
-    public <P extends Pane> void addScene (P paneGroup, double w, double h){
-        paneGroup.getChildren().add(rtr);
-        root.getChildren().add(paneGroup);
-        scene = new Scene(root, w, h);
-    }
-    
-    
     
     public Scene create(Stage stage, Scene back){
 

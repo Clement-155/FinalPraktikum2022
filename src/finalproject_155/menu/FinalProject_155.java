@@ -9,11 +9,6 @@ Utilizing Codes from = https://zetcode.com/javagames/spaceinvaders/
 package finalproject_155.menu;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,7 +16,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -52,7 +46,7 @@ public class FinalProject_155 extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.setTitle("Space Invaders");
         primaryStage.centerOnScreen();
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
         primaryStage.setResizable(false);
         

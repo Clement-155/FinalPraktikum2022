@@ -15,21 +15,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import javafx.application.Application;
-import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.SwingUtilities;
 
@@ -37,7 +26,7 @@ import javax.swing.SwingUtilities;
  *
  * @author Christopher Clement
  */
-public class MenuPlay extends MenuTemp {
+public class MenuPlay extends MenuTemp implements SwingApp<SpaceInvaders> {
     
     ArrayList<Entry> scores = new ArrayList<Entry>();
    
@@ -68,14 +57,12 @@ public class MenuPlay extends MenuTemp {
     @Override
     public Scene create(Stage stage, Scene back){
         
-        final SwingNode spaceInvaders = new SwingNode();
-        var ex = new SpaceInvaders();
-        game(spaceInvaders, ex);
+        final var ex = new SpaceInvaders();
         
-        this.addScene(GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT);
+        gameRun(ex);
         
-        BorderPane temp = (BorderPane) root.getChildren().get(0);
-        temp.setCenter(spaceInvaders);
+        BorderPane bp = new BorderPane();
+        this.addScene(bp, GlobalVars.WIN_WIDTH, GlobalVars.WIN_HEIGHT, "SpaceInvaders");
         
         this.initScore();
         
@@ -83,7 +70,7 @@ public class MenuPlay extends MenuTemp {
             
             @Override
             public void handle(ActionEvent event) {
-                ex.dispose();
+                gameClose(ex);
                 stage.setScene(back);
                 stage.centerOnScreen();
             }
@@ -96,7 +83,8 @@ public class MenuPlay extends MenuTemp {
         
     }
     
-        public static void game(final SwingNode swingnode, final SpaceInvaders ex) {
+    @Override
+    public void gameRun(final SpaceInvaders ex) {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -105,6 +93,13 @@ public class MenuPlay extends MenuTemp {
                 ex.setVisible(true);
             }
         });
+    }
+        
+    @Override
+    public void gameClose(final SpaceInvaders ex) {
+
+        ex.dispose();
+        
     }
     
 }
