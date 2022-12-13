@@ -18,26 +18,33 @@ Aplikasi Konsep PBO
   
     MenuTemp.java, casting pada method "addScene".
     
-`       ...... 
+       `...... 
+
         if(paneGroup instanceof BorderPane){
+        
             BorderPane bp = (BorderPane) paneGroup;
+            
             bp.setBottom(rtr);
+            
         .......`
     
   Constructor :
   
     Entry.java
     
-`        public Entry(String Name, Integer Score) {
+        `public Entry(String Name, Integer Score) {
+
             this.Name = Name;
+            
             this.Score = Score;
+            
         }`
   
   Overloading :
   
     MenuTemp.java, generics pada method "addScene".
     
-`    public <P extends Pane> void addScene (P paneGroup, String title){
+     `public <P extends Pane> void addScene (P paneGroup, String title){
         this.title = new Text(title);
         if(paneGroup instanceof BorderPane){
             BorderPane bp = (BorderPane) paneGroup;
@@ -71,7 +78,7 @@ Aplikasi Konsep PBO
   
     MenuPlay.java, overriding method "gameRun" dan "gameClose".
     
-`    @Override
+    `@Override
     public void gameRun(final SpaceInvaders ex) {
 
         SwingUtilities.invokeLater(new Runnable() {
@@ -94,7 +101,7 @@ Aplikasi Konsep PBO
   
     MenuTemp.java, encapsulation judul window.
     
-`    private Text title;
+    `private Text title;
     ...
     ...
     public Text getTitle() {
@@ -109,7 +116,7 @@ Aplikasi Konsep PBO
   
     Penggunaan MenuTemp.java pada MenuHighScr.java dan MenuPlay.java
     
-`    public class MenuPlay extends MenuTemp implements SwingApp<SpaceInvaders>
+    `public class MenuPlay extends MenuTemp implements SwingApp<SpaceInvaders>
     public class MenuHighScr extends MenuTemp`
     
   Polymorphism : Implementasi overloading dan overriding.
@@ -124,7 +131,7 @@ Aplikasi Konsep PBO
   
     MenuHighScr.java, mengatasi error IOException dalam membaca file.
     
-`        try{
+        `try{
             BufferedReader fileInput = Files.newBufferedReader(path);
             line = fileInput.readLine();
             while (line != null) {
@@ -213,7 +220,7 @@ public void start(Stage primaryStage) {
   
     MenuTemp.java, abstract class untuk window-window.
     
-`    abstract class MenuTemp {
+    `abstract class MenuTemp {
 
     private Text title;
     Button rtr = new Button("Return");
@@ -278,7 +285,8 @@ public void start(Stage primaryStage) {
   Generics :
   
     MenuTemp.java, generics pada method "addScene".
-`        public <P extends Pane> void addScene (P paneGroup, String title){
+        
+    `public <P extends Pane> void addScene (P paneGroup, String title){
         this.title = new Text(title);
         if(paneGroup instanceof BorderPane){
             BorderPane bp = (BorderPane) paneGroup;
@@ -311,7 +319,7 @@ public void start(Stage primaryStage) {
   
     MenuPlay.java, penggunaan ArrayList dan method static "sort".
     
-`    ArrayList<Entry> scores = new ArrayList<Entry>();
+    `ArrayList<Entry> scores = new ArrayList<Entry>();
     ...
     Collections.sort(scores, Entry.COMPARE_BY_SCORE);`
   
@@ -320,7 +328,7 @@ public void start(Stage primaryStage) {
     Secara keseluruhan, aplikasi menerima input button
     MenuHighScr.java, aplikasi membaca input berupa data highscore dari file txt.
   
-`        Path path = Paths.get("HighScore.txt");
+       `Path path = Paths.get("HighScore.txt");
 
         try{
             BufferedReader fileInput = Files.newBufferedReader(path);
