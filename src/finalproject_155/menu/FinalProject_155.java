@@ -58,7 +58,7 @@ public class FinalProject_155 extends Application {
             public void handle(ActionEvent event) {
                 MenuPlay play = new MenuPlay();
                 primaryStage.setScene(play.create(primaryStage, mainScene));
-                primaryStage.centerOnScreen();
+                primaryStage.setY(primaryStage.getY()+125);
             }
             
         });
