@@ -187,7 +187,7 @@ public class Board extends JPanel {
                 Commons.BOARD_WIDTH / 2);
     }
 
-    private int update() {
+    private void update() {
 
         if (deaths == Commons.NUMBER_OF_ALIENS_TO_DESTROY) {
 
